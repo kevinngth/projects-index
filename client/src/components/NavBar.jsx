@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
     const classes = useStyles();
     return (
-        <AppBar position="fixed" className={classes.root}>
+        <AppBar position="sticky" className={classes.root}>
             <Toolbar>
                 <NavLinks />
             </Toolbar>
