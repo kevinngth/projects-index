@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import StudentRow from "./StudentRow";
 
 const darkTheme = createMuiTheme({
     palette: {
@@ -44,25 +45,14 @@ const ProjectsTable = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {students.map((student) => (
-                            <TableRow key={student.name}>
-                                <TableCell component="th" scope="row">
-                                    {student.name}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {student.project1}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {student.project2}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {student.project3}
-                                </TableCell>
-                                <TableCell align="left">
-                                    {student.project4}
-                                </TableCell>
-                            </TableRow>
-                        ))}
+                        {students.map((student) => {
+                            return (
+                                <StudentRow
+                                    student={student}
+                                    key={student._id}
+                                />
+                            );
+                        })}
                     </TableBody>
                 </Table>
             </TableContainer>

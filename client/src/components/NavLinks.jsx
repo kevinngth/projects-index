@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
             color: "#282C34",
         },
         "&:active": {
-            color: "#A4A9B3",
+            color: "#FFFFFF",
         },
     },
 }));
