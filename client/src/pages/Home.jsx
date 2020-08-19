@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BackDrop } from "../components";
+import { BackDrop, ProjectsTable } from "../components";
 import api from "../api";
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
 
     return (
         <>
-            <p>{!!students.length && students[0].name}</p>
+            <ProjectsTable students={students} />
             <BackDrop open={isLoading} />
         </>
     );
