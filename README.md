@@ -1,8 +1,12 @@
-# projects-index
+# Class Projects Index
 
 An index to showcase students' projects
 
 This app is split into 2 modules, client and server.
+
+## Client
+
+`cd client` and run `yarn
 
 ## Server
 

@@ -1,4 +1,5 @@
 import NavLinks from "./NavLinks";
 import NavBar from "./NavBar";
+import BackDrop from "./Backdrop";
 
-export { NavLinks, NavBar };
+export { BackDrop, NavLinks, NavBar };
