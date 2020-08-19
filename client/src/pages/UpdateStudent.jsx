@@ -1,6 +1,6 @@
 import React from "react";
 
-const StudentsInsert = () => {
+const UpdateStudent = () => {
     return (
         <div>
             <p>In this page you'll see the form to add a student</p>
@@ -8,4 +8,4 @@ const StudentsInsert = () => {
     );
 };
 
-export default StudentsInsert;
+export default UpdateStudent;

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavBar } from "../components";
-import { Home, StudentsInsert } from "../pages";
+import { Home, UpdateStudent } from "../pages";
 import "./index.css";
 
 const App = () => {
@@ -12,11 +12,7 @@ const App = () => {
                 <main className="App-body">
                     <Switch>
                         <Route path="/" exact component={Home} />
-                        <Route
-                            path="/students/create"
-                            exact
-                            component={StudentsInsert}
-                        />
+                        <Route path="/update" exact component={UpdateStudent} />
                     </Switch>
                 </main>
             </Router>

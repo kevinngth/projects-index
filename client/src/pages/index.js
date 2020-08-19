@@ -1,4 +1,4 @@
 import Home from "./Home";
-import StudentsInsert from "./StudentsInsert";
+import UpdateStudent from "./UpdateStudent";
 
-export { Home, StudentsInsert };
+export { Home, UpdateStudent };

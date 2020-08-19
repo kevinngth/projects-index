@@ -29,7 +29,7 @@ const NavLinks = () => {
             <Link to="/" className={classes.links}>
                 <HomeIcon />
             </Link>
-            <Link to="#" className={classes.links}>
+            <Link to="/update" className={classes.links}>
                 <EditIcon />
             </Link>
         </Typography>
