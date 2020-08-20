@@ -5,10 +5,10 @@ const api = axios.create({
     baseURL: API,
 });
 
-export const getAllStudents = () => api.get(`/students`);
-export const updateStudentById = (id, payload) =>
+const getAllStudents = () => api.get(`/students`);
+const updateStudentById = (id, payload) =>
     api.put(`/student/${id}`, payload);
-export const getStudentById = (id) => api.get(`/student/${id}`);
+const getStudentById = (id) => api.get(`/student/${id}`);
 
 const apis = {
     getAllStudents,
