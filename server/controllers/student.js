@@ -17,7 +17,9 @@ const updateStudent = async (req, res) => {
                 message: "Student not found!",
             });
         }
-        student.name = body.name;
+        for (const key in body) {
+            student[key] = body[key];
+        }
         student
             .save()
             .then(() => {
