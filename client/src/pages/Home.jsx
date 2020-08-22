@@ -7,16 +7,13 @@ const Home = () => {
     const [students, setStudents] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = async () => {
-        await api.getAllStudents().then((response) => {
-            setStudents(response.data.data);
-            setIsLoading(false);
-        });
-    };
-
     useEffect(() => {
         setIsLoading(true);
-        fetchData();
+        api.getAllStudents()
+            .then((response) => {
+                setStudents(response.data.data);
+            })
+            .then(setIsLoading(false));
     }, []);
 
     return (

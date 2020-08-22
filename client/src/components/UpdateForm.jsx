@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { BackDrop, Buttons, FormSelect, FormTextField } from "../components";
+import { toVarName } from "../utils";
 import api from "../api";
 
 const UpdateForm = () => {
+    const PROJECT_LABELS = ["Project 1", "Project 2", "Project 3", "Project 4"];
+    const FIELDS = [
+        { name: "title", label: "Title" },
+        { name: "appURL", label: "App URL" },
+        { name: "repoURL", label: "Repo URL" },
+    ];
+    const EMPTY_PROJECT = {
+        title: "",
+        appURL: "",
+        repoURL: "",
+    };
+
+    const [isLoading, setIsLoading] = useState(false);
     const [students, setStudents] = useState([]);
     const [student, setStudent] = useState({});
-    const [project, setProject] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
-
-    const fetchData = async () => {
-        await api.getAllStudents().then((response) => {
-            setStudents(response.data.data);
-            setIsLoading(false);
-        });
-    };
+    const [projectId, setProjectId] = useState("");
+    const [project, setProject] = useState(EMPTY_PROJECT);
 
     useEffect(() => {
         setIsLoading(true);
-        fetchData();
+        api.getAllStudents()
+            .then((response) => {
+                setStudents(response.data.data);
+            })
+            .then(setIsLoading(false));
     }, []);
 
     const nameChangeHandler = (e) => {
@@ -28,15 +39,21 @@ const UpdateForm = () => {
 
     const projectChangeHandler = (e) => {
         const { value } = e.target;
-        const projectId = value.toLowerCase().split(" ").join("");
-        const project = student[projectId];
-        setProject(project);
+        setProjectId(toVarName(value));
+        setProject(student[projectId]);
     };
 
     const editProject = (e, field) => {
         const newProject = { ...project };
         newProject[field] = e.target.value;
         setProject(newProject);
+    };
+
+    const submitHandler = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
     };
 
     return (
@@ -56,40 +73,23 @@ const UpdateForm = () => {
                     <FormSelect
                         label="Project"
                         changeHandler={projectChangeHandler}
-                        values={[
-                            "Project 1",
-                            "Project 2",
-                            "Project 3",
-                            "Project 4",
-                        ]}
+                        values={PROJECT_LABELS}
                     />
                 </Grid>
-                <Grid item xs={12}>
-                    <FormTextField
-                        name="title"
-                        label="Title"
-                        changeHandler={editProject}
-                        value={project}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormTextField
-                        name="appURL"
-                        label="App URL"
-                        changeHandler={editProject}
-                        value={project}
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <FormTextField
-                        name="repoURL"
-                        label="Repo URL"
-                        changeHandler={editProject}
-                        value={project}
-                    />
-                </Grid>
+                {FIELDS.map((field) => {
+                    return (
+                        <Grid item xs={12} key={field.label}>
+                            <FormTextField
+                                name={field.name}
+                                label={field.label}
+                                changeHandler={editProject}
+                                value={project}
+                            />
+                        </Grid>
+                    );
+                })}
             </Grid>
-            <Buttons content={"Submit"} />
+            <Buttons content={"Submit"} clickHandler={submitHandler} />
         </>
     );
 };
