@@ -4,11 +4,3 @@
     font-size: calc(10px + 2vmin);
     min-height: 100vh;
 }
-
-.App-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
