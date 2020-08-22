@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import { BackDrop, Buttons, FormSelect, FormTextField } from "../components";
 import api from "../api";
 
@@ -67,28 +66,26 @@ const UpdateForm = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <FormTextField
-                        name={"title"}
+                        name="title"
                         label="Title"
                         changeHandler={editProject}
                         value={project}
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="appURL"
+                    <FormTextField
                         name="appURL"
                         label="App URL"
-                        fullWidth
+                        changeHandler={editProject}
+                        value={project}
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="repoURL"
+                    <FormTextField
                         name="repoURL"
                         label="Repo URL"
-                        fullWidth
+                        changeHandler={editProject}
+                        value={project}
                     />
                 </Grid>
             </Grid>
