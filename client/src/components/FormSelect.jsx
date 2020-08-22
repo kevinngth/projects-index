@@ -18,6 +18,7 @@ const FormSelect = (props) => {
         <FormControl className={classes.formControl}>
             <InputLabel id={label}>{label}</InputLabel>
             <Select
+                required
                 labelId={label}
                 id={label}
                 onChange={changeHandler}

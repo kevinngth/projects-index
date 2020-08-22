@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-import { BackDrop, Buttons, FormSelect, FormTextField } from "../components";
+import { BackDrop, Buttons, FormSelect, ProjectForm } from "../components";
 import { toVarName } from "../utils";
 import api from "../api";
 
 const UpdateForm = () => {
     const PROJECT_LABELS = ["Project 1", "Project 2", "Project 3", "Project 4"];
-    const FIELDS = [
-        { name: "title", label: "Title" },
-        { name: "appURL", label: "App URL" },
-        { name: "repoURL", label: "Repo URL" },
-    ];
-    const EMPTY_PROJECT = {
-        title: "",
-        appURL: "",
-        repoURL: "",
-    };
 
     const [isLoading, setIsLoading] = useState(false);
     const [students, setStudents] = useState([]);
     const [student, setStudent] = useState({});
     const [projectId, setProjectId] = useState("");
-    const [project, setProject] = useState(EMPTY_PROJECT);
 
     useEffect(() => {
         setIsLoading(true);
@@ -37,16 +26,15 @@ const UpdateForm = () => {
         setStudent(students.find((student) => student.name === value));
     };
 
-    const projectChangeHandler = (e) => {
+    const projectIdChangeHandler = (e) => {
         const { value } = e.target;
         setProjectId(toVarName(value));
-        setProject(student[projectId]);
     };
 
-    const editProject = (e, field) => {
-        const newProject = { ...project };
-        newProject[field] = e.target.value;
-        setProject(newProject);
+    const projectChangeHandler = (project) => {
+        const updatedStudent = { ...student };
+        updatedStudent[projectId] = project;
+        setStudent(updatedStudent);
     };
 
     const submitHandler = () => {
@@ -72,22 +60,15 @@ const UpdateForm = () => {
                 <Grid item xs={12} sm={6}>
                     <FormSelect
                         label="Project"
-                        changeHandler={projectChangeHandler}
+                        changeHandler={projectIdChangeHandler}
                         values={PROJECT_LABELS}
                     />
                 </Grid>
-                {FIELDS.map((field) => {
-                    return (
-                        <Grid item xs={12} key={field.label}>
-                            <FormTextField
-                                name={field.name}
-                                label={field.label}
-                                changeHandler={editProject}
-                                value={project}
-                            />
-                        </Grid>
-                    );
-                })}
+                <ProjectForm
+                    student={student}
+                    projectId={projectId}
+                    changeHandler={projectChangeHandler}
+                />
             </Grid>
             <Buttons content={"Submit"} clickHandler={submitHandler} />
         </>

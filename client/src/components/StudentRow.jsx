@@ -1,7 +1,7 @@
 import React from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import ProjectCell from "./ProjectCell";
+import { ProjectCell } from "../components";
 
 const StudentRow = (props) => {
     const {
