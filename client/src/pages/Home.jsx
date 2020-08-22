@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BackDrop, ProjectsTable } from "../components";
+import { BackDrop, ProjectsTable, Title } from "../components";
 import api from "../api";
+import { BATCH } from "../config";
 
 const Home = () => {
     const [students, setStudents] = useState([]);
@@ -20,6 +21,7 @@ const Home = () => {
 
     return (
         <>
+            <Title content={BATCH} />
             <ProjectsTable students={students} />
             <BackDrop open={isLoading} />
         </>

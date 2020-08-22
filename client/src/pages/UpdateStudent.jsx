@@ -1,10 +1,12 @@
 import React from "react";
+import { Title, UpdateForm } from "../components";
 
 const UpdateStudent = () => {
     return (
-        <div>
-            <p>In this page you'll see the form to add a student</p>
-        </div>
+        <>
+            <Title content={"Update"} />
+            <UpdateForm />
+        </>
     );
 };
 
