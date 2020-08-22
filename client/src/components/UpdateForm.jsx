@@ -68,6 +68,7 @@ const UpdateForm = () => {
                 <Grid item xs={12}>
                     <FormTextField
                         name={"title"}
+                        label="Title"
                         changeHandler={editProject}
                         value={project}
                     />

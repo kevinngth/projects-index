@@ -2,8 +2,8 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 
 const FormTextField = (props) => {
-    const { name, changeHandler, value } = props;
-    const label = name[0].toUpperCase() + name.slice(1);
+    const { name, changeHandler, value, label } = props;
+
     return (
         <TextField
             required
