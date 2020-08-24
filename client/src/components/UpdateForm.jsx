@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { BackDrop, Buttons, FormSelect, ProjectForm } from "../components";
 import { toVarName } from "../utils";
@@ -11,6 +12,7 @@ const UpdateForm = () => {
     const [students, setStudents] = useState([]);
     const [student, setStudent] = useState({});
     const [projectId, setProjectId] = useState("");
+    const [shouldRedirect, setShouldRedirect] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -37,12 +39,21 @@ const UpdateForm = () => {
         setStudent(updatedStudent);
     };
 
-    const submitHandler = () => {
+    const submitHandler = async () => {
         setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
+        api.updateStudentById(student._id, student)
+            .then((response) => {
+                console.log(response.data.success);
+            })
+            .then(() => {
+                setIsLoading(false);
+                setShouldRedirect(true);
+            });
     };
+
+    if (shouldRedirect) {
+        return <Redirect to="/" />;
+    }
 
     return (
         <>

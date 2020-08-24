@@ -41,6 +41,7 @@ const ProjectForm = (props) => {
                             fullWidth
                             onChange={(e) => updateProject(e, name)}
                             value={project && project[name]}
+                            type={name.includes("URL") ? "url" : "text"}
                         />
                     </Grid>
                 );
