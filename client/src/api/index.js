@@ -6,8 +6,7 @@ const api = axios.create({
 });
 
 const getAllStudents = () => api.get(`/students`);
-const updateStudentById = (id, payload) =>
-    api.put(`/student/${id}`, payload);
+const updateStudentById = (id, payload) => api.put(`/student/${id}`, payload);
 const getStudentById = (id) => api.get(`/student/${id}`);
 
 const apis = {
