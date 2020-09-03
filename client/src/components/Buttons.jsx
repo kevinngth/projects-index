@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Buttons = (props) => {
-    const { clickHandler, content } = props;
+    const { clickHandler, content, isValid } = props;
     const classes = useStyles();
     return (
         <div className={classes.buttons}>
@@ -30,6 +30,7 @@ const Buttons = (props) => {
                 color="primary"
                 onClick={clickHandler}
                 className={classes.button}
+                disabled={!isValid}
             >
                 {content}
             </Button>

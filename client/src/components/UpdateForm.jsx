@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { BackDrop, Buttons, FormSelect, ProjectForm } from "../components";
-import { toVarName } from "../utils";
+import { toVarName, isValid } from "../utils";
 import api from "../api";
 
 const UpdateForm = () => {
@@ -81,7 +81,11 @@ const UpdateForm = () => {
                     changeHandler={projectChangeHandler}
                 />
             </Grid>
-            <Buttons content={"Submit"} clickHandler={submitHandler} />
+            <Buttons
+                content={"Submit"}
+                clickHandler={submitHandler}
+                isValid={student && isValid(student[projectId])}
+            />
         </>
     );
 };

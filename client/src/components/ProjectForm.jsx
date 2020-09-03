@@ -4,9 +4,17 @@ import Grid from "@material-ui/core/Grid";
 
 const ProjectForm = (props) => {
     const FIELDS = [
-        { name: "title", label: "Title" },
-        { name: "appURL", label: "App URL" },
-        { name: "repoURL", label: "Repo URL" },
+        { name: "title", label: "Title", placeholder: "My Project" },
+        {
+            name: "appURL",
+            label: "App URL",
+            placeholder: "https://myapp.herokuapp.com",
+        },
+        {
+            name: "repoURL",
+            label: "Repo URL",
+            placeholder: "https://github.com/me/myapp",
+        },
     ];
     const EMPTY_PROJECT = {
         title: "",
@@ -30,7 +38,7 @@ const ProjectForm = (props) => {
     return (
         <>
             {FIELDS.map((field) => {
-                const { name, label } = field;
+                const { name, label, placeholder } = field;
                 return (
                     <Grid item xs={12} key={label}>
                         <TextField
@@ -42,6 +50,7 @@ const ProjectForm = (props) => {
                             onChange={(e) => updateProject(e, name)}
                             value={project && project[name]}
                             type={name.includes("URL") ? "url" : "text"}
+                            placeholder={placeholder}
                         />
                     </Grid>
                 );
