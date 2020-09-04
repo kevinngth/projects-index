@@ -30,4 +30,4 @@ Create a `.env` file based on the example provided in `.env.sample` on the same 
 
 #### Credits
 
-<sub>Tutorial by Sam Barros [here](https://medium.com/swlh/how-to-create-your-first-mern-mongodb-express-js-react-js-and-node-js-stack-7e8b20463e66)</sub>
+<sub>Tutorial by Sam Barros [here](https://medium.com/swlh/how-to-create-your-first-mern-mongodb-express-js-react-js-and-node-js-stack-7e8b20463e66) and Karolis Stulgys [here](https://medium.com/karolis-stulgys/deploy-client-and-server-code-to-heroku-from-a-single-git-repo-44c5b65da10a)</sub>
