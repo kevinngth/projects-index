@@ -1,7 +1,14 @@
 const Student = require("../models/student");
 
 const updateStudent = async (req, res) => {
-    const { body } = req;
+    const { body, headers } = req;
+
+    if (!(headers.passcode === process.env.PASSCODE)) {
+        return res.status(400).json({
+            success: false,
+            error: "Incorrect Passcode",
+        });
+    }
 
     if (!body) {
         return res.status(400).json({
@@ -38,16 +45,6 @@ const updateStudent = async (req, res) => {
     });
 };
 
-const getStudentById = async (req, res) => {
-    await Student.findOne({ _id: req.params.id }, (err, student) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err });
-        }
-
-        return res.status(200).json({ success: true, data: student });
-    }).catch((err) => console.log(err));
-};
-
 const getStudents = async (req, res) => {
     await Student.find({}, (err, students) => {
         if (err) {
@@ -65,5 +62,4 @@ const getStudents = async (req, res) => {
 module.exports = {
     updateStudent,
     getStudents,
-    getStudentById,
 };

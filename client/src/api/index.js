@@ -6,13 +6,16 @@ const api = axios.create({
 });
 
 const getAllStudents = () => api.get(`/students`);
-const updateStudentById = (id, payload) => api.put(`/student/${id}`, payload);
-const getStudentById = (id) => api.get(`/student/${id}`);
+const updateStudentById = (id, payload, passcode) =>
+    api.put(`/student/${id}`, payload, {
+        headers: {
+            passcode,
+        },
+    });
 
 const apis = {
     getAllStudents,
     updateStudentById,
-    getStudentById,
 };
 
 export default apis;

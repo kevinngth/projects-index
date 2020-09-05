@@ -13,6 +13,7 @@ const UpdateForm = () => {
     const [student, setStudent] = useState({});
     const [projectId, setProjectId] = useState("");
     const [shouldRedirect, setShouldRedirect] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         setIsLoading(true);
@@ -41,14 +42,18 @@ const UpdateForm = () => {
 
     const submitHandler = async () => {
         setIsLoading(true);
-        api.updateStudentById(student._id, student)
-            .then((response) => {
-                console.log(response.data.success);
-            })
-            .then(() => {
+        const passcode = window.prompt("Please enter passcode:");
+        api.updateStudentById(student._id, student, passcode).then(
+            (response) => {
+                console.log(response);
                 setIsLoading(false);
                 setShouldRedirect(true);
-            });
+            },
+            (response) => {
+                setIsLoading(false);
+                setErrorMessage(response?.response?.data?.error);
+            }
+        );
     };
 
     if (shouldRedirect) {
@@ -85,6 +90,7 @@ const UpdateForm = () => {
                 content={"Submit"}
                 clickHandler={submitHandler}
                 isValid={student && isValid(student[projectId])}
+                errorMessage={errorMessage}
             />
         </>
     );

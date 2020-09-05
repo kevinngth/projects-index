@@ -1,11 +1,14 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     buttons: {
         display: "flex",
-        justifyContent: "flex-end",
+        flexDirection: "row-reverse",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
     },
     button: {
         marginTop: theme.spacing(3),
@@ -21,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Buttons = (props) => {
-    const { clickHandler, content, isValid } = props;
+    const { clickHandler, content, isValid, errorMessage } = props;
     const classes = useStyles();
     return (
         <div className={classes.buttons}>
@@ -34,6 +37,9 @@ const Buttons = (props) => {
             >
                 {content}
             </Button>
+            <Typography color="error" variant="overline" display="block">
+                {errorMessage}
+            </Typography>
         </div>
     );
 };
