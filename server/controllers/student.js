@@ -2,8 +2,7 @@ const Student = require("../models/student");
 
 const updateStudent = async (req, res) => {
     const { body, headers } = req;
-    console.log("process.env.PASSCODE = " + process.env.PASSCODE);
-    console.log("headers.passcode = " + headers.passcode);
+
     if (!(headers.passcode === process.env.PASSCODE)) {
         return res.status(400).json({
             success: false,
