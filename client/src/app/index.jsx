@@ -17,10 +17,10 @@ const darkTheme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
     layout: {
         width: "auto",
-        marginLeft: theme.spacing(2),
-        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        marginRight: 0,
         [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-            width: 600,
+            maxWidth: 1000,
             marginLeft: "auto",
             marginRight: "auto",
         },

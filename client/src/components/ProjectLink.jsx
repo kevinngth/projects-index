@@ -18,7 +18,12 @@ const ProjectLink = (props) => {
     const classes = useStyles();
     const { label, url } = props;
     return (
-        <a className={classes.links} href={url}>
+        <a
+            className={classes.links}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             {label || "untitled"}
         </a>
     );
